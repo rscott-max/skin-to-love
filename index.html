@@ -7,91 +7,41 @@
     <title>Contact Us - The Skin to Love Clinic</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Josefin+Sans:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <!-- Header / Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <h1 class="hero-title">Contact Us</h1>
-            <p class="hero-subtitle">Let's begin your personalised journey</p>
-        </div>
-    </header>
+    <!-- Hero Wrapper with Floating Form -->
+    <section class="hero-wrapper">
+        <div class="hero-content container">
 
-    <!-- Intro Section -->
-    <section class="intro">
-        <div class="container">
-            <p>We're here to help you achieve your skin goals. Choose the best way to get in touch below.</p>
-        </div>
-    </section>
-
-    <!-- Three Options Section -->
-    <section class="options-section">
-        <div class="container">
-            <h2 class="section-title">How would you like to proceed?</h2>
-            <div class="options-grid">
-                <!-- Option 1: Call -->
-                <div class="option-card">
-                    <div class="icon">📞</div>
-                    <h3>Give Us A Call</h3>
-                    <p>Immediate guidance from our friendly front of house team.</p>
-                    <a href="tel:01727837429" class="btn btn-primary">Call 01727 837429</a>
-                </div>
-
-                <!-- Option 2: Book Online -->
-                <div class="option-card">
-                    <div class="icon">📅</div>
-                    <h3>Book Online</h3>
-                    <p>Ready to commit? Book a specific consultation time directly.</p>
-                    <a href="#" class="btn btn-secondary">Book Consultation</a>
-                </div>
-
-                <!-- Option 3: Not Sure / Enquiry -->
-                <div class="option-card">
-                    <div class="icon">✉️</div>
-                    <h3>Not Sure Yet?</h3>
-                    <p>Send us an enquiry and we'll help guide you to the right treatment.</p>
-                    <a href="#enquiry-form" class="btn btn-outline">Send Enquiry</a>
-                </div>
+            <!-- Hero Text Side -->
+            <div class="hero-text">
+                <h1 class="hero-title">Book Your Appointment Today</h1>
+                <p class="hero-subtitle">Take the first step toward smoother, healthier, and more radiant skin. Schedule
+                    your personalized consultation or treatment session with our specialists.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Main Content Grid: Form + Image -->
-    <section class="enquiry-section" id="enquiry-form">
-        <div class="container layout-grid">
-
-            <!-- Contact Form -->
-            <div class="form-wrapper">
-                <h2>Send Us An Enquiry</h2>
-                <p class="form-intro">Share a little about what you'd like help with. We'll respond with personalised,
-                    honest advice.</p>
+            <!-- Floating Form Card -->
+            <div class="floating-form-card">
+                <h2>Schedule Your Consultation</h2>
 
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="name">Full Name *</label>
+                        <label for="name">Name*</label>
                         <input type="text" id="name" name="name" required placeholder="Your full name">
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required placeholder="07700 900000">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" name="email" required placeholder="you@example.com">
-                        </div>
+                    <div class="form-group">
+                        <label for="phone">Phone No*</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="07700 900000">
                     </div>
 
-                    <!-- New: Journey Stage Dropdown -->
                     <div class="form-group">
-                        <label for="journey-stage">Where are you in your journey? *</label>
+                        <label for="journey-stage">Select a service*</label>
                         <select id="journey-stage" name="journey_stage" required>
                             <option value="" disabled selected>Please select...</option>
                             <option value="researching">Just researching / Looking for advice</option>
@@ -101,60 +51,67 @@
                         </select>
                     </div>
 
-                    <!-- Contact Preference -->
-                    <div class="form-group contact-pref-group">
-                        <label>How would you like us to contact you?</label>
-                        <p class="field-hint">We recommend a phone call for the most personalised advice.</p>
-
+                    <div class="form-group">
+                        <label for="contact_pref">Preferred Contact Method</label>
                         <div class="radio-group">
                             <label class="radio-option">
                                 <input type="radio" name="contact_pref" value="phone" checked>
-                                <span class="radio-label">Phone Call (Recommended)</span>
+                                <span>Phone</span>
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="contact_pref" value="email">
-                                <span class="radio-label">Email</span>
+                                <span>Email</span>
                             </label>
                         </div>
-                        <div id="email-warning" class="warning-box hidden">
-                            <small>Note: Email responses may be slower and less detailed than a quick chat.</small>
-                        </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="message">Tell us a little about your skin or treatment goals *</label>
-                        <textarea id="message" name="message" rows="4" required
-                            placeholder="E.g. I'd like softer lines around my eyes, or I've struggled with breakouts..."></textarea>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="3"
+                            placeholder="Tell us about your skin goals..."></textarea>
                     </div>
+                    <!-- Referral Field Hidden for aesthetic simplicity in this view, or can be added back if critical -->
+                    <input type="hidden" name="referral" value="website">
 
-                    <!-- Updated Referral Source -->
-                    <div class="form-group">
-                        <label for="referral">Where did you hear about us?</label>
-                        <select id="referral" name="referral">
-                            <option value="" disabled selected>Please choose an option...</option>
-                            <option value="google">Google Search</option>
-                            <option value="recommendation">Friend/Family Recommendation</option>
-                            <option value="social">Instagram / Facebook</option>
-                            <option value="signage">Walked by the clinic</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn btn-submit">Send Enquiry</button>
+                    <button type="submit" class="btn btn-submit">Confirm Appointment</button>
+                    <p class="field-hint" style="text-align:center; margin-top:10px;">Our team will contact you to
+                        confirm the details.</p>
                 </form>
             </div>
-
-            <!-- Image Side -->
-            <div class="image-wrapper">
-                <!-- Placeholder for Front of House image. Will update with actual path after checking -->
-                <img src="images/front-of-house-full.png" alt="Our friendly Front of House team" class="feature-image">
-                <div class="image-caption">
-                    <p>Our friendly team is ready to welcome you.</p>
-                </div>
-            </div>
-
         </div>
     </section>
+
+    <!-- Secondary Navigation (The 3 Options) -->
+    <section class="secondary-nav">
+        <div class="container">
+            <div class="options-grid">
+                <!-- Option 1: Call -->
+                <div class="option-card">
+                    <div class="icon">📞</div>
+                    <h3>Give Us A Call</h3>
+                    <p>Immediate guidance from our friendly front of house team.</p>
+                    <a href="tel:01727837429" class="btn btn-outline">Call 01727 837429</a>
+                </div>
+
+                <!-- Option 2: Book Online -->
+                <div class="option-card">
+                    <div class="icon">📅</div>
+                    <h3>Book Online</h3>
+                    <p>Ready to commit? Book a specific consultation time directly.</p>
+                    <a href="#" class="btn btn-outline">Book Consultation</a>
+                </div>
+
+                <!-- Option 3: Visit Us -->
+                <div class="option-card">
+                    <div class="icon">📍</div>
+                    <h3>Visit Us</h3>
+                    <p>Come see our clinic and meet the team in person.</p>
+                    <a href="#" class="btn btn-outline">Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <footer>
         <div class="container">
