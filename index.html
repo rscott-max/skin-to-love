@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Bellefair&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
     <link rel="stylesheet" href="styles.css">
@@ -22,34 +22,60 @@
     <!-- ========== NAVIGATION ========== -->
     <nav class="nav" id="nav">
         <div class="container nav-inner">
-            <a href="#" class="nav-logo">The Founder's Edit</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">Our Story</a></li>
-                <li><a href="#testimonials">Reviews</a></li>
-                <li><a href="#register">Register</a></li>
-            </ul>
+            <div class="nav-left">
+                <ul class="nav-links">
+                    <li><a href="#about">Our Story</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-logo logo-lockup">
+                <a href="#" aria-label="Skin to Love Clinic">
+                    <img src="images/Skin-to-Love-Logo.png" alt="Skin to Love Logo" class="logo-img stl-logo">
+                </a>
+                <div class="logo-divider"></div>
+                <a href="#" aria-label="The Alternative Beauty & Fragrance">
+                    <img src="images/The-Alternative-Logo.webp" alt="The Alternative Logo" class="logo-img alt-logo">
+                </a>
+            </div>
+
+            <div class="nav-right">
+                <ul class="nav-links">
+                    <li><a href="#register">Register</a></li>
+                </ul>
+            </div>
+
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
+
+        <!-- Mobile Navigation Wrapper for JS toggle -->
+        <div class="mobile-nav" id="navLinks">
+            <ul class="mobile-nav-links">
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
+                <li><a href="#register">Register</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- ========== HERO ========== -->
     <header class="hero" id="hero">
         <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <p class="hero-eyebrow">International Women's Day 2026</p>
-            <h1 class="hero-title">The Founder's Edit</h1>
-            <p class="hero-tagline">The Power of the Collective</p>
-            <p class="hero-sub">Two founders. One High Street. A unified vision of clinical skin health and luxury
-                beauty, curated for your most vibrant self.</p>
-            <a href="#register" class="btn btn-primary hero-cta">Enter the Draw</a>
+        <div class="hero-image-wrapper">
+            <img class="hero-bg-img" src="images/Hero-Image.jpg" alt="Hero background">
         </div>
-        <div class="hero-scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
+        <div class="container hero-content fade-in visible">
+            <p class="hero-eyebrow">SKIN TO LOVE x THE ALTERNATIVE: TWO FOUNDERS. ONE HIGH STREET. A CELEBRATION OF
+                INTERNATIONAL WOMEN’S DAY.</p>
+            <h1 class="hero-title">The founder's edit.</h1>
+            <p class="hero-sub">Jane and Alexandra have merged their expertise in the knowledge that when clinical
+                science meets artistic luxury, something transformative happens. They invite you to become a part of
+                that below.</p>
+            <a href="#register" class="btn hero-cta-btn">Enter the draw</a>
         </div>
     </header>
 
@@ -58,38 +84,65 @@
         <div class="container">
             <div class="about-grid">
                 <div class="about-text fade-in">
-                    <h2>Redefining the Architecture of Confidence</h2>
-                    <p>This International Women's Day, we are redefining the architecture of confidence.
-                        <strong>Jane</strong> (<em>The Skin to Love Clinic</em>) and <strong>Alex</strong> (<em>The
-                            Alternative Beauty &amp; Fragrance</em>) have merged their expertise to create a
-                        360-degree approach to self-expression. We believe that when clinical science meets artistic
-                        luxury, something transformative happens.
-                    </p>
+                    <h2>A Foundation of Trust. A Partnership of Experts.</h2>
+                    <p>Before The Alternative Beauty &amp; Fragrance was born, its founder, Alexandra, was Jane’s
+                        patient. For years, she traveled across counties to experience The Skin to Love Clinic's
+                        uncompromising standard of care. Watch Jane and Alexandra discuss how they support each other's
+                        businesses and their shared philosophy: bespoke care, expertise and intention. This is not just
+                        about a giveaway, it’s about acknowledging that none of us really thrive without the support of
+                        those around us.</p>
 
-                    <p>We invite you to join our community of assured, radiant women. By registering below, you enter
-                        our exclusive draw to win one of two <strong>Founder's Edit Boxes</strong>
-                        <span class="highlight">(Value £400)</span>. Each box is a curated journey through
-                        medical-grade skin health and niche beauty artistry; a definitive collection for the woman who
-                        defines her own standards.
-                    </p>
+                    <p style="color: #555555; font-size: 0.9em; margin-top: 1.5rem;">By accepting your invitation below,
+                        you enter the draw to win a comprehensive VISIA® skin consultation, a premium Hydrafacial, and a
+                        curated discovery session from The Alternative.</p>
                 </div>
-                <div class="about-image fade-in">
-                    <img src="images/front-of-house.png" alt="The Skin to Love Clinic — St Albans" loading="lazy">
+                <div class="about-video fade-in">
+                    <div class="founder-video-wrapper" style="position: relative;">
+                        <video id="founderVideo" autoplay loop muted playsinline
+                            aria-label="Jane and Alex, the founders, sharing their story">
+                            <source src="images/Skin-to-Love-Promo.mp4" type="video/mp4">
+                        </video>
+                        <button id="unmutePill"
+                            style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%); background: rgba(250, 249, 246, 0.85); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 30px; padding: 8px 16px; border: 1px solid rgba(0,0,0,0.05); cursor: pointer; z-index: 10;">
+                            <span class="unmute-pill-text"
+                                style="font-family: sans-serif; font-size: 0.7em; letter-spacing: 0.1em;">TAP TO
+                                UNMUTE</span>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <!-- Founder's Invitation callout -->
-            <div class="invitation-card fade-in">
-                <div class="invitation-icon">✦</div>
-                <div class="invitation-content">
-                    <h3>Your Founder's Invitation</h3>
-                    <p>Because we believe in the power of the collective, <strong>every woman who enters</strong> will
-                        be granted a private Founder's Invitation. This exclusive pass unlocks a bespoke expert
-                        consultation at The Skin to Love Clinic — accompanied by a Founder's Edit treatment credit —
-                        and a luxury discovery session at The Alternative Beauty and Fragrance during the month of
-                        April.</p>
-                </div>
+            <!-- Founder's Edit Plaque -->
+            <div class="zero-commission-callout fade-in"
+                style="background-color: #F5F4F0; padding: 4rem 2rem; border-radius: 4px; max-width: 800px; margin: 0 auto 6rem auto;">
+                <h3
+                    style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 1.5rem; font-size: 1.8rem; color: #2C2C2C;">
+                    Skin to Love x The Alternative: The Founder’s Edit</h3>
+                <ul
+                    style="list-style-type: none; padding: 0; max-width: 60ch; margin: 0 auto 1rem auto; line-height: 1.6; color: #2C2C2C;">
+                    <li style="margin-bottom: 0.8rem;">— A Bespoke Consultation & Premium HydraFacial at The Skin to
+                        Love Clinic</li>
+                    <li style="margin-bottom: 0.8rem;">— An Expert Makeup Session & Joonbyrd Body Ritual at The
+                        Alternative Beauty & Fragrance</li>
+                </ul>
+                <p
+                    style="font-size: 0.85rem; color: #6A6A6A; font-style: italic; text-align: center; margin-bottom: 2.5rem;">
+                    Valid for use until 30th June 2026.</p>
+                <p
+                    style="text-align: center; font-weight: 500; max-width: 60ch; margin: 0 auto 1.5rem auto; color: #2C2C2C;">
+                    Beyond our main draw, every valid registration is an invitation into our community. You will receive
+                    a private Founder’s Invitation, unlocking:</p>
+                <ul
+                    style="list-style-type: none; padding: 0; max-width: 60ch; margin: 0 auto 1rem auto; line-height: 1.6; color: #2C2C2C;">
+                    <li style="margin-bottom: 0.8rem;">— An expert clinical consultation at The Skin to Love Clinic.
+                    </li>
+                    <li style="margin-bottom: 0.8rem;">— A luxury makeup session at The Alternative Beauty and
+                        Fragrance.</li>
+                </ul>
+                <p style="font-size: 0.85rem; color: #6A6A6A; font-style: italic; text-align: center;">Both experiences
+                    include a Founder’s Edit credit to put toward your discovery, valid for use until 9th May 2026.</p>
             </div>
+
         </div>
     </section>
 
@@ -99,15 +152,13 @@
             <div class="section-header fade-in">
                 <h2>What Our Clients Say</h2>
                 <div class="rating-badge">
-                    <span class="stars">★★★★★</span>
-                    <span class="rating-text">4.9 from 520 Google Reviews</span>
+                    <span class="rating-text">5.0 / 5.0 Clinical Excellence</span>
                 </div>
             </div>
 
             <div class="testimonial-track" id="testimonialTrack">
                 <!-- Review 1 -->
                 <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"A long-overdue review for the incredible Jane at Skin to Love. Jane
                         has been looking after my skin for years and she is truly exceptional at what she does. Her
                         knowledge, professionalism and the amount of genuinely valuable advice she gives is
@@ -117,7 +168,6 @@
 
                 <!-- Review 2 -->
                 <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"I was greeted by Lara at the reception desk who was just so lovely
                         and kind. My treatment was done by Joanna who was brilliant. She explained everything to me
                         patiently and made sure I was comfortable during the treatment. Overall I had wonderful
@@ -127,7 +177,6 @@
 
                 <!-- Review 3 -->
                 <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"Emma was so easy to talk to and explained everything clearly from
                         the initial consultation. The reception team are so welcoming and professional from the moment
                         you arrive. I really appreciate the trust and care."</p>
@@ -136,7 +185,6 @@
 
                 <!-- Review 4 -->
                 <div class="testimonial-card fade-in">
-                    <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"The team at Skin to Love are absolutely amazing. The personalised
                         approach and genuine care they provide is second to none. I wouldn't trust anyone else with my
                         skin. Highly recommend to anyone looking for expert, honest advice."</p>
@@ -145,9 +193,17 @@
             </div>
 
             <div class="testimonial-nav">
-                <button class="testimonial-btn" id="prevBtn" aria-label="Previous review">‹</button>
+                <button class="testimonial-btn" id="prevBtn" aria-label="Previous review">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.5">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
                 <div class="testimonial-dots" id="testimonialDots"></div>
-                <button class="testimonial-btn" id="nextBtn" aria-label="Next review">›</button>
+                <button class="testimonial-btn" id="nextBtn" aria-label="Next review">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#2C2C2C" stroke-width="1.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
             </div>
         </div>
     </section>
@@ -188,7 +244,6 @@
                     <div class="checkbox-group">
                         <label class="checkbox-label" for="consent_terms">
                             <input type="checkbox" id="consent_terms" name="consent_terms" required>
-                            <span class="checkmark"></span>
                             <span class="checkbox-text">I agree to the Founder's Edit
                                 <a href="#" class="inline-link">Terms &amp; Conditions</a> and have read
                                 The Skin to Love Clinic and The Alternative Beauty and Fragrance's privacy policies.
@@ -202,7 +257,6 @@
                     <div class="checkbox-group">
                         <label class="checkbox-label" for="consent_stl">
                             <input type="checkbox" id="consent_stl" name="consent_stl">
-                            <span class="checkmark"></span>
                             <span class="checkbox-text">I would like to receive clinical expertise and exclusive offers
                                 from The Skin to Love Clinic.</span>
                         </label>
@@ -212,7 +266,6 @@
                     <div class="checkbox-group">
                         <label class="checkbox-label" for="consent_ab">
                             <input type="checkbox" id="consent_ab" name="consent_ab">
-                            <span class="checkmark"></span>
                             <span class="checkbox-text">I would like to receive beauty and fragrance expertise and
                                 exclusive offers from The Alternative Beauty and Fragrance.</span>
                         </label>
@@ -221,17 +274,29 @@
                     <p class="form-error" id="formError" hidden>Please complete all required fields and accept the
                         Terms &amp; Conditions.</p>
 
-                    <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
-                        <span class="btn-text">Register &amp; Enter the Draw</span>
-                        <span class="btn-loader" hidden></span>
-                    </button>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-solid-charcoal btn-submit" id="submitBtn">
+                            <span class="btn-text">Accept the Founder's Invitation</span>
+                            <span class="btn-loader" hidden></span>
+                        </button>
+
+                        <div class="security-notice">
+                            <svg class="padlock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                            </svg>
+                            <span>Your data is secured with medical-grade confidentiality. We are a zero-pressure
+                                environment operating on a strict Zero-Commission policy. Your skin’s foundational
+                                health is our only metric, never a sales target.</span>
+                        </div>
+                    </div>
                 </form>
             </div>
 
             <!-- ========== SUCCESS VIEW ========== -->
             <div class="success-wrapper" id="successWrapper" hidden>
                 <div class="success-card fade-in">
-                    <div class="success-icon">✦</div>
                     <h2>You're in the draw, congratulations.</h2>
                     <p class="success-lead">Thank you for joining our community of assured, radiant women. We are
                         delighted to have you with us as we celebrate the power of the collective this International

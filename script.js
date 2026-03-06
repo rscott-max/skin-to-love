@@ -204,4 +204,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ========== UNMUTE PILL ==========
+    const founderVideo = document.getElementById('founderVideo');
+    const unmutePill   = document.getElementById('unmutePill');
+    const pillText     = unmutePill && unmutePill.querySelector('.unmute-pill-text');
+
+    if (founderVideo && unmutePill && pillText) {
+        unmutePill.addEventListener('click', () => {
+            founderVideo.muted = !founderVideo.muted;
+            const isNowUnmuted = !founderVideo.muted;
+
+            unmutePill.classList.toggle('is-unmuted', isNowUnmuted);
+            pillText.textContent = isNowUnmuted ? 'Mute' : 'Tap to Unmute';
+        });
+    }
+
 });
