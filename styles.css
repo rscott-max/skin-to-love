@@ -196,6 +196,10 @@ img {
     transition: filter var(--transition);
 }
 
+.stl-logo {
+    max-height: 36px;
+}
+
 .alt-logo {
     max-height: 24px;
 }
@@ -1148,8 +1152,8 @@ input[type="checkbox"]:checked {
 /* Fade-in on scroll */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .fade-in.visible {
