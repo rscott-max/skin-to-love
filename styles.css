@@ -436,7 +436,7 @@ img {
 
 /* ---------- ABOUT ---------- */
 .about {
-    padding: 8rem 0;
+    padding: 8rem 0 4rem 0;
     background: var(--bg-primary);
     position: relative;
     z-index: 2;
@@ -617,7 +617,7 @@ img {
 
 /* ---------- TESTIMONIALS ---------- */
 .testimonials {
-    padding: 8rem 0;
+    padding: 4rem 0 8rem 0;
     background: var(--bg-primary);
     overflow: hidden;
 }
