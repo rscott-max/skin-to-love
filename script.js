@@ -49,77 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fadeElements.forEach(el => fadeObserver.observe(el));
 
-    // ========== TESTIMONIAL CAROUSEL ==========
-    const track = document.getElementById('testimonialTrack');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const dotsContainer = document.getElementById('testimonialDots');
-    const cards = track.querySelectorAll('.testimonial-card');
-    let currentSlide = 0;
-    let visibleCards = getVisibleCards();
-    let maxSlide = Math.max(0, cards.length - visibleCards);
 
-    function getVisibleCards() {
-        const width = window.innerWidth;
-        if (width <= 600) return 1;
-        if (width <= 900) return 2;
-        return 3;
-    }
-
-    function createDots() {
-        dotsContainer.innerHTML = '';
-        const totalDots = maxSlide + 1;
-        for (let i = 0; i < totalDots; i++) {
-            const dot = document.createElement('span');
-            dot.className = 'dot' + (i === 0 ? ' active' : '');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-
-    function updateDots() {
-        dotsContainer.querySelectorAll('.dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
-        });
-    }
-
-    function goToSlide(n) {
-        currentSlide = Math.max(0, Math.min(n, maxSlide));
-        const cardWidth = cards[0].offsetWidth + 28; // card + gap
-        track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
-        updateDots();
-    }
-
-    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-
-    // Auto-scroll testimonials
-    let autoScroll = setInterval(() => {
-        if (currentSlide >= maxSlide) {
-            goToSlide(0);
-        } else {
-            goToSlide(currentSlide + 1);
-        }
-    }, 5000);
-
-    // Pause auto-scroll on hover
-    track.addEventListener('mouseenter', () => clearInterval(autoScroll));
-    track.addEventListener('mouseleave', () => {
-        autoScroll = setInterval(() => {
-            if (currentSlide >= maxSlide) goToSlide(0);
-            else goToSlide(currentSlide + 1);
-        }, 5000);
-    });
-
-    // Recalculate on resize
-    window.addEventListener('resize', () => {
-        visibleCards = getVisibleCards();
-        maxSlide = Math.max(0, cards.length - visibleCards);
-        createDots();
-        goToSlide(Math.min(currentSlide, maxSlide));
-    });
-
-    createDots();
 
     // ========== FORM HANDLING ==========
     const form = document.getElementById('registrationForm');
