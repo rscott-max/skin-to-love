@@ -93,34 +93,62 @@ document.addEventListener('DOMContentLoaded', () => {
         submitBtn.disabled = true;
 
         // Collect form data
-        const formData = {
-            fullName,
-            email,
-            mobile,
+        const payload = {
+            full_name: fullName,
+            email: email,
+            mobile: mobile,
             consent_terms: termsChecked,
             consent_stl: document.getElementById('consent_stl').checked,
-            consent_ab: document.getElementById('consent_ab').checked,
-            timestamp: new Date().toISOString()
+            consent_ab: document.getElementById('consent_ab').checked
         };
 
-        console.log('Registration submitted:', formData);
+        // ---- Supabase REST insert ----
+        const SUPABASE_URL = 'https://basaskslxsmyvoqreekj.supabase.co';
+        const SUPABASE_ANON_KEY = 'sb_publishable_Y9C5tCWI2_7A8-ymgNLBPg_27a5nsI_';
 
-        // Simulate API call (replace with actual endpoint)
-        setTimeout(() => {
-            // Hide form, show success
-            formWrapper.hidden = true;
-            successWrapper.hidden = false;
+        fetch(`${SUPABASE_URL}/rest/v1/registrations`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'apikey': SUPABASE_ANON_KEY,
+                'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                'Prefer': 'return=minimal'
+            },
+            body: JSON.stringify(payload)
+        })
+            .then(async response => {
+                if (!response.ok) {
+                    const err = await response.json().catch(() => ({}));
+                    throw new Error(err.message || 'Error submitting registration');
+                }
 
-            // Scroll to success view
-            successWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Hide form, show success
+                formWrapper.hidden = true;
+                successWrapper.hidden = false;
 
-            // Animate success elements
-            const successCard = successWrapper.querySelector('.success-card');
-            successCard.classList.add('fade-in');
-            requestAnimationFrame(() => {
-                successCard.classList.add('visible');
+                // Scroll to success view
+                successWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                // Animate success elements
+                const successCard = successWrapper.querySelector('.success-card');
+                successCard.classList.add('fade-in');
+                requestAnimationFrame(() => {
+                    successCard.classList.add('visible');
+                });
+            })
+            .catch(err => {
+                console.error('Submission error:', err);
+
+                // Reset button state
+                btnText.hidden = false;
+                btnLoader.hidden = true;
+                submitBtn.disabled = false;
+
+                // Show user-friendly error
+                formError.textContent = 'Something went wrong submitting your registration. Please try again.';
+                formError.hidden = false;
+                formError.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
-        }, 1200);
     });
 
     // ========== SMOOTH SCROLL FOR ANCHORS ==========
@@ -136,8 +164,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ========== UNMUTE PILL ==========
     const founderVideo = document.getElementById('founderVideo');
-    const unmutePill   = document.getElementById('unmutePill');
-    const pillText     = unmutePill && unmutePill.querySelector('.unmute-pill-text');
+    const unmutePill = document.getElementById('unmutePill');
+    const pillText = unmutePill && unmutePill.querySelector('.unmute-pill-text');
 
     if (founderVideo && unmutePill && pillText) {
         unmutePill.addEventListener('click', () => {
